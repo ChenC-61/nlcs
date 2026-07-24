@@ -1,7 +1,7 @@
 # nlcs  
   
 ==nlcs== implements the initial N-LCS workflow from preprocessed cognitive test   
-data to individual CDM and CDA metrics.  
+data to caculate CDM and CDA metrics.  
   
 ## Scope of version 0.1.0  
   
@@ -11,7 +11,7 @@ The package includes:
 2. one-factor assessment using factor parallel analysis and original Velicer   
 3. MAP;  
 4. factor analysis and construction of the HC whitened covariance space;  
-5. individual CDM and HC-median-adjusted CDA calculation.  
+5. CDM and CDA calculation.  
   
 It intentionally does not select cognitive tests, handle missing data, assess   
 skewness, or impute values. Supply complete, numeric cognitive-test matrices   
@@ -57,4 +57,4 @@ first introduced N-LCS and evaluated its clinical relevance.
 Chen, C. (2026). Beyond severity: Characterizing cognitive heterogeneity in schizophrenia at the level of cognitive structure. Applied Neuropsychology: Adult, 1–8. https://doi.org/10.1080/23279095.2026.2691088  
   
 For reproducible work, users may additionally cite the specific ==nlcs== GitHub   
-release used in their analysis.  This package is licensed under the MIT License. See LICENSE file for details.  
+This package is licensed under the GNU General Public License, version 3 or later (GPL-3.0-or-later). 
