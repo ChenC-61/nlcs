@@ -1,0 +1,24 @@
+Package: nlcs
+Type: Package
+Title: Normative Latent Cognitive Structure Analysis
+Version: 0.1.0
+Authors@R: person(given = "Chen", family = "Chen", role = c("aut", "cre"), email = "chench61@alumni.nu.ac.th")
+Description: Constructs a normative latent cognitive structure (N-LCS) from
+    healthy-control cognitive test scores. The package standardizes scores to
+    healthy controls, evaluates a one-factor solution with parallel analysis
+    and Velicer's MAP, constructs a whitened covariance space, and calculates
+    cognitive-dimension magnitude (CDM) and cognitive-deviation angle (CDA).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    EFAtools,
+    psych,
+    stats
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends:
+    R (>= 4.1.0)
