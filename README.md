@@ -35,15 +35,55 @@ raw CDA of the HC reference sample retained in the model.
 ```
 library(nlcs)
 
-# hc and patient are complete numeric data frames or matrices.
-# Their columns are the same selected cognitive tests, with the same names.
-standardized <- standardize_normative(hc, patient)
+# Standardization using HC reference
+std <- standardize_normative(
+  hc_data = hc_scores,
+  new_data = scz_scores
+)
 
-# Stops with an informative message unless PA and original MAP both support one factor.
-model <- fit_nlcs(standardized$hc_z)
+# Build N-LCS
+nlcs <- fit_nlcs(
+  hc_z = std$hc_z
+)
 
-hc_metrics <- compute_nlcs_metrics(model, standardized$hc_z, ids = hc_id)
-patient_metrics <- compute_nlcs_metrics(model, standardized$new_z, ids = patient_id)
+# HC metrics
+hc_results <- compute_nlcs_metrics(
+  nlcs_result = nlcs,
+  data_z = std$hc_z
+)
+
+# SCZ metrics
+scz_results <- compute_nlcs_metrics(
+  nlcs_result = nlcs,
+  data_z = std$new_z
+)
+
+# Summary table
+nlcs_summary <- data.frame(
+  group = rep(c("HC", "SCZ"), each = 2),
+  metric = rep(c("CDM", "CDA"), 2),
+  median = c(
+    median(hc_results$CDM),
+    median(hc_results$CDA),
+    median(scz_results$CDM),
+    median(scz_results$CDA)
+  ),
+  Q1 = c(
+    quantile(hc_results$CDM, 0.25),
+    quantile(hc_results$CDA, 0.25),
+    quantile(scz_results$CDM, 0.25),
+    quantile(scz_results$CDA, 0.25)
+  ),
+  Q3 = c(
+    quantile(hc_results$CDM, 0.75),
+    quantile(hc_results$CDA, 0.75),
+    quantile(scz_results$CDM, 0.75),
+    quantile(scz_results$CDA, 0.75)
+  )
+)
+
+nlcs_summary
+
 
 ```
   
