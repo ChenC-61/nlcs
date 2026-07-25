@@ -19,13 +19,13 @@
   x[, variables, drop = FALSE]
 }
 
-.raw_nlcs_metrics <- function(x, model) {
-  centered <- sweep(x, 2L, model$hc_z_mean, FUN = "-")
-  whitened <- centered %*% model$whitening_matrix
-  dot_product <- drop(whitened %*% model$latent_axis_whitened)
+.raw_nlcs_metrics <- function(x, nlcs_result) {
+  centered <- sweep(x, 2L, nlcs_result$hc_z_mean, FUN = "-")
+  whitened <- centered %*% nlcs_result$whitening_matrix
+  dot_product <- drop(whitened %*% nlcs_result$latent_axis_whitened)
   magnitude <- sqrt(rowSums(whitened ^ 2))
 
-  cdm <- if (identical(model$cdm_type, "axis_projection")) dot_product else magnitude
+  cdm <- if (identical(nlcs_result$cdm_type, "axis_projection")) dot_product else magnitude
   cosine <- rep(NA_real_, length(magnitude))
   nonzero <- magnitude > 0
   cosine[nonzero] <- dot_product[nonzero] / magnitude[nonzero]
