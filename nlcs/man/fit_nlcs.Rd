@@ -7,5 +7,5 @@
   \item{parallel_iter}{Number of parallel-analysis iterations.}
   \item{loading_tolerance}{Threshold for treating a loading as zero when selecting the CDM definition.}
 }
-\value{An object of class \code{nlcs_model}.}
+\value{An object of class \code{nlcs_result}.}
 \description{Runs factor parallel analysis and original Velicer MAP. A model is returned only if both recommend one factor.}
