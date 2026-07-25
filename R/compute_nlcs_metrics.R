@@ -13,7 +13,7 @@
 compute_nlcs_metrics <- function(nlcs_result, data_z, ids = NULL) {
   if (!inherits(nlcs_result, "nlcs_result")) stop("`nlcs_result` must be an `nlcs_result`.", call. = FALSE)
   x <- .as_numeric_matrix(data_z, "data_z")
-  x <- .check_matching_variables(x, model$variables, "data_z")
+  x <- .check_matching_variables(x, nlcs_result$variables, "data_z")
   if (!is.null(ids) && length(ids) != nrow(x)) {
     stop("`ids` must have one value per row of `data_z`.", call. = FALSE)
   }
