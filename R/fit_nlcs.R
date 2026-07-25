@@ -14,9 +14,9 @@ fit_nlcs <- function(hc_z, parallel_iter = 1000L, loading_tolerance = 1e-8) {
   if (ncol(x) < 2L) stop("At least two cognitive tests are required.", call. = FALSE)
   if (parallel_iter < 1L) stop("`parallel_iter` must be at least 1.", call. = FALSE)
 
-  pa <- suppressMessages(
-  suppressWarnings(
-    psych::fa.parallel(
+  invisible(
+  capture.output(
+    pa <- psych::fa.parallel(
       x,
       fa = "fa",
       n.iter = parallel_iter,
