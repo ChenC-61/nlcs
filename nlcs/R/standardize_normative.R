@@ -1,5 +1,3 @@
-#' Standardize cognitive tests to healthy controls
-#'
 #' Uses healthy-control (HC) means and sample standard deviations as the
 #' normative reference for both HC and new subjects. Data cleaning, test
 #' selection, missing-data handling, and direction recoding are deliberately
@@ -8,7 +6,6 @@
 #' @param hc_data Numeric HC cognitive-test data. Rows are subjects and columns
 #'   are tests; column names are required.
 #' @param new_data Optional numeric cognitive-test data for other subjects.
-#'   It must contain exactly the same named columns as `hc_data`.
 #' @return A list with `hc_z`, `new_z`, `means`, `sds`, and `variables`.
 #' @export
 standardize_normative <- function(hc_data, new_data = NULL) {
