@@ -1,4 +1,4 @@
-citHeader("To cite nlcs in publications, please cite the published N-LCS 1.0 paper below.")
+citHeader("To cite nlcs in publications, please cite the published N-LCS paper below.")
 
 citEntry(
   entry = "Article",
