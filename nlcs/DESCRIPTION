@@ -3,7 +3,7 @@ Type: Package
 Title: N-LCS: Normative Latent Cognitive Structure
 Version: 0.1.0
 Authors@R: person(given = "Chen", family = "Chen", role = c("aut", "cre"), email = "chench61@alumni.nu.ac.th")
-Description:Provides functions to construct a normative latent cognitive structure (N-LCS) from cognitive test data standardized to healthy controls, and to compute deviation metrics (CDM, CDA)
+Description: Provides functions to construct a normative latent cognitive structure (N-LCS) from cognitive test data standardized to healthy controls, and to compute deviation metrics (CDM, CDA)
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
