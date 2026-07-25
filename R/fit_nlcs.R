@@ -17,7 +17,7 @@ fit_nlcs <- function(hc_z, parallel_iter = 1000L, loading_tolerance = 1e-8) {
   pa <- psych::fa.parallel(x, fa = "fa", n.iter = parallel_iter, plot = FALSE)
   map <- EFAtools::N_FACTORS(x, criteria = "MAP")
   pa_factors <- as.integer(pa$nfact)
-  map_factors <- as.integer(map$n_factors[["nfac_MAP_TR2"]])
+  map_factors <- as.integer(map$n_factors[["MAP_TR2"]])
   if (is.na(pa_factors) || is.na(map_factors)) {
     stop("Factor-retention analysis did not return a usable PA and MAP result.", call. = FALSE)
   }
