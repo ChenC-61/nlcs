@@ -12,8 +12,5 @@ Imports:
     EFAtools,
     psych,
     stats
-Suggests:
-    knitr,
-    rmarkdown
 Depends:
     R (>= 4.1.0)
