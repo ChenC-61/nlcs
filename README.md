@@ -2,18 +2,18 @@
   
 ==nlcs== builds one-factor N-LCS from preprocessed cognitive scores and calculates CDM and CDA.  
   
-## Scope of version 0.1.0  
+## Scope of version 1.0  
   
 The package includes:  
   
 1. HC-reference standardization;  
 2. one-factor assessment using parallel analysis and MAP procedure;   
 3. builds one-factor N-LCS and construction of the HC whitened covariance space;  
-4. CDM and CDA calculation.  
+4. calculation of cognitive deviation magnitude (CDM) and cognitive deviation angle (CDA).  
   
-It intentionally does not select cognitive tests, handle missing data, assess   
-skewness, or impute values. Supply complete, numeric cognitive-test matrices   
-whose columns are the selected tests.  
+Data preprocessing is outside the scope of N-LCS version 1.0. The package does not select cognitive tests, handle missing data, detect or remove outliers, assess skewness, perform distributional or normality transformations, or impute missing values. Users should complete these preprocessing steps before applying the N-LCS functions.
+
+The package therefore requires complete, finite, numeric cognitive-test data, with columns corresponding to the cognitive tests selected for the N-LCS analysis.
   
 ## Core rule  
   
