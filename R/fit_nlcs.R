@@ -9,6 +9,14 @@
 #'   zero when classifying CDM as directional or magnitude-based.
 #' @return An `nlcs_result` object.
 #' @export
+#' @examples
+#' set.seed(123)
+#' hc_data <- matrix(rnorm(100 * 10), nrow = 100, ncol = 10)
+#' new_data <- matrix(rnorm(10 * 10), nrow = 10, ncol = 10)
+#' colnames(hc_data) <- paste0("test", 1:10)
+#' colnames(new_data) <- colnames(hc_data)
+#'
+#' result <- standardize_normative(hc_data, new_data)
 fit_nlcs <- function(hc_z, parallel_iter = 1000L, loading_tolerance = 1e-8) {
   x <- .as_numeric_matrix(hc_z, "hc_z")
   if (ncol(x) < 2L) stop("At least two cognitive tests are required.", call. = FALSE)
