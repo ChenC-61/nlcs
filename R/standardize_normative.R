@@ -8,6 +8,14 @@
 #' @param new_data Optional numeric cognitive-test data for other subjects.
 #' @return A list with `hc_z`, `new_z`, `means`, `sds`, and `variables`.
 #' @export
+#' @examples
+#' set.seed(123)
+#' hc_data <- matrix(rnorm(100 * 10), nrow = 100, ncol = 10)
+#' new_data <- matrix(rnorm(10 * 10), nrow = 10, ncol = 10)
+#' colnames(hc_data) <- paste0("test", 1:10)
+#' colnames(new_data) <- colnames(hc_data)
+#'
+#' result <- standardize_normative(hc_data, new_data)
 standardize_normative <- function(hc_data, new_data = NULL) {
   hc <- .as_numeric_matrix(hc_data, "hc_data")
   if (nrow(hc) < 2L) {
