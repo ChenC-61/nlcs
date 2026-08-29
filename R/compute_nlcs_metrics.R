@@ -10,6 +10,14 @@
 #' @return A data frame containing optional `id`, `CDM`, `CDA_raw`, `CDA`, and
 #'   `CDM_type`.
 #' @export
+#' @examples
+#' set.seed(123)
+#' hc_data <- matrix(rnorm(100 * 10), nrow = 100, ncol = 10)
+#' new_data <- matrix(rnorm(10 * 10), nrow = 10, ncol = 10)
+#' colnames(hc_data) <- paste0("test", 1:10)
+#' colnames(new_data) <- colnames(hc_data)
+#'
+#' result <- standardize_normative(hc_data, new_data)
 compute_nlcs_metrics <- function(nlcs_result, data_z, ids = NULL) {
   if (!inherits(nlcs_result, "nlcs_result")) stop("`nlcs_result` must be an `nlcs_result`.", call. = FALSE)
   x <- .as_numeric_matrix(data_z, "data_z")
