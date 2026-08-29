@@ -1,5 +1,6 @@
-# nlcs 0.1.0
+# nlcs 1.0
 
-* Initial public-development version.
-* Added HC-reference standardization, one-factor N-LCS construction, whitened
-  covariance space, CDM, and CDA.
+* Initial public release.
+* Implements the core computational components of the N-LCS framework:
+HC-reference standardization, one-factor assessment and N-LCS construction,
+HC-based whitened covariance space, and calculation of CDM and CDA.
