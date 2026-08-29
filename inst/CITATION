@@ -1,6 +1,6 @@
 citHeader("To cite nlcs in publications, please cite the published N-LCS paper below.")
 
-citEntry(
+bibentry(
   entry = "Article",
   title = "Beyond severity: Characterizing cognitive heterogeneity in schizophrenia at the level of cognitive structure",
   author = person("Chen", "Chen"),
