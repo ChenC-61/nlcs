@@ -3,7 +3,7 @@
 \title{Compute N-LCS CDM and CDA metrics}
 \usage{compute_nlcs_metrics(nlcs_result, data_z, ids = NULL)}
 \arguments{
-  \item{model}{An object created by \code{fit_nlcs}.}
+  \item{nlcs_result}{An object created by \code{fit_nlcs}.}
   \item{data_z}{Cognitive tests standardized using the same HC reference.}
   \item{ids}{Optional identifiers, one for each row in \code{data_z}.}
 }
