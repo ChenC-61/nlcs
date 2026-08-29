@@ -4,7 +4,7 @@
 #' whitened covariance space. CDA is the angle from the N-LCS vector, adjusted
 #' by subtracting the HC median CDA stored when the model was fitted.
 #'
-#' @param model An `nlcs_result` created by [fit_nlcs()].
+#' @param nlcs_result An `nlcs_result` created by [fit_nlcs()].
 #' @param data_z Cognitive-test data already standardized with the HC reference.
 #' @param ids Optional subject identifiers, one per row of `data_z`.
 #' @return A data frame containing optional `id`, `CDM`, `CDA_raw`, `CDA`, and
