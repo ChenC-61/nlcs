@@ -131,7 +131,34 @@ message(
   nlcs_result
 }
 
+#' Print a fitted normative latent cognitive structure
+#'
+#' Prints the number of cognitive tests, factor-retention results,
+#' and the CDM definition.
+#'
+#' @param x An object of class `nlcs_result` returned by [fit_nlcs()].
+#' @param ... Additional arguments, currently unused.
+#'
+#' @return The input `x`, a named list of class `nlcs_result`,
+#'   returned invisibly and unchanged. Its components describe the
+#'   fitted HC reference model and are documented in [fit_nlcs()].
+#'   The function is called for the side effect of printing a
+#'   concise model summary to the console.
+#'
+#' @name nlcs_result
 #' @export
+#' @export print.nlcs_result
+#' @examples
+#' set.seed(42)
+#' ability <- rnorm(100)
+#' hc <- sapply(seq_len(4), function(j) {
+#'   ability + rnorm(100, sd = 0.4)
+#' })
+#' colnames(hc) <- paste0("test", seq_len(4))
+#' std <- standardize_normative(hc)
+#' # Few iterations keep the example fast; use the default for analysis.
+#' model <- fit_nlcs(std$hc_z, parallel_iter = 10L)
+#' print(model)
 print.nlcs_result <- function(x, ...) {
   cat("Normative latent cognitive structure (N-LCS)\n")
   cat("  Tests:", length(x$variables), "\n")
