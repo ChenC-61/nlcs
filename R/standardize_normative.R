@@ -1,21 +1,43 @@
-#' Uses healthy-control (HC) means and sample standard deviations as the
-#' normative reference for both HC and new subjects. Data cleaning, test
-#' selection, missing-data handling, and direction recoding are deliberately
-#' outside this function.
+#' Standardize cognitive tests to healthy controls
 #'
-#' @param hc_data Numeric HC cognitive-test data. Rows are subjects and columns
-#'   are tests; column names are required.
-#' @param new_data Optional numeric cognitive-test data for other subjects.
-#' @return A list with `hc_z`, `new_z`, `means`, `sds`, and `variables`.
+#' Uses healthy-control (HC) means and sample standard deviations to
+#' standardize HC and new-subject cognitive-test scores.
+#'
+#' @param hc_data A complete, finite numeric matrix or data frame.
+#'   Rows are healthy controls and columns are cognitive tests.
+#'   Column names are required, and each test must have a nonzero
+#'   sample standard deviation.
+#' @param new_data An optional complete, finite numeric matrix or data
+#'   frame for new subjects, with the same test names as `hc_data`.
+#'   Columns are reordered to match the HC reference.
+#'
+#' @return A named list of class `nlcs_standardization` containing:
+#' \describe{
+#'   \item{hc_z}{A numeric matrix of standardized HC scores, with the
+#'     same dimensions and column names as `hc_data`.}
+#'   \item{new_z}{A numeric matrix of standardized new-subject scores,
+#'     with columns in HC order, or `NULL` if `new_data` is omitted.}
+#'   \item{means}{A named numeric vector of HC test means.}
+#'   \item{sds}{A named numeric vector of HC sample standard deviations.}
+#'   \item{variables}{A character vector of test names in HC order.}
+#' }
+#' Each standardized score is the original score minus the HC mean,
+#' divided by the HC sample standard deviation. Positive values are
+#' above the HC mean and negative values are below it. Whether higher
+#' scores indicate better performance depends on the original test coding.
+#'
 #' @export
 #' @examples
-#' set.seed(123)
-#' hc_data <- matrix(rnorm(100 * 10), nrow = 100, ncol = 10)
-#' new_data <- matrix(rnorm(10 * 10), nrow = 10, ncol = 10)
-#' colnames(hc_data) <- paste0("test", 1:10)
-#' colnames(new_data) <- colnames(hc_data)
-#'
-#' result <- standardize_normative(hc_data, new_data)
+#' hc <- cbind(
+#'   test1 = c(8, 10, 12, 14, 16),
+#'   test2 = c(3, 5, 4, 7, 6)
+#' )
+#' new <- cbind(test1 = c(9, 13), test2 = c(4, 6))
+#' std <- standardize_normative(hc, new)
+#' std$hc_z
+#' std$new_z
+#' std$means
+#' std$sds
 standardize_normative <- function(hc_data, new_data = NULL) {
   hc <- .as_numeric_matrix(hc_data, "hc_data")
   if (nrow(hc) < 2L) {
