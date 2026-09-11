@@ -12,6 +12,7 @@ RoxygenNote: 8.1.0
 Imports:
     EFAtools,
     psych,
-    stats
+    stats,
+    utils
 Depends:
     R (>= 4.1.0)
